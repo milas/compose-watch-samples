@@ -1,0 +1,14 @@
+services:
+  myapp:
+    build: .
+    ports:
+      - '2170:3000'
+    x-develop:
+      watch:
+        - path: package.json
+          action: rebuild
+        - path: package-lock.json
+          action: rebuild
+        - path: src/
+          action: sync
+          target: /app/src
